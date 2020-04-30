@@ -1,0 +1,21 @@
+Un estilo de programación donde la forma principal es la aplicación de funciones a argumentos.
+
+Es aquel que soporta e incentiva de el uso de estilo funcional
+
+Haremos un programa que devuelva la suma de los primeros 'n' números.
+No existen las variables
+Listas por comprension
+Indentación, sistemas de tipos muy poderoso, es decir si una variable es entero o string, la idea es que hay que comprobar si funciona.
+Sisetma de tipos mucho más poderoso, cuanta más información damos más ayudamos al interprete.
+Es imposible producir ese tipo de errores sin esforzarse, todos los tipos tienen sentido, ncontrar los errores antes de tiempo, resultados no deseados, como valores no deseados, definir una funciuon que tenga otro tipo, miuy por encima, se permite, como re cargar funciones, todo esto no es dificil, y la verdad que ayuda a tener una calidad de codigo.
+'Listas por comprensión'
+	Haskell tiene la capacidad, la forma de estructurar, son las listas, tipos basicos, pero las listas son para todo, pero en general, las listas son la salvación, no tiene bucles.
+	Forma concisa de definir las listas, las caracteristicas que incentiva a haskell es la recursividad, haskell no tiene bucles, funciones recursivas, funciones que se llaman a si mismas. Recursividad pura.
+'pattern matching'
+	Definir 20 veces la funciones para 20 formas diferentes
+	Uso de wardas
+	Puede parecer que escribir una función para varios casos
+	Haskell es un lenguaje funcional de orden superior, las funciones puden recibir funciones y devolver funciones, esto sirve para currificación, tienen esta caracteristicas.
+	Podria hacer que definir otras funciones ya seas muy sencillo.
+	Magicamente esa funcion sirve más.
+	Permite crear composicion de funciones.
