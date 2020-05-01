@@ -1,3 +1,5 @@
+number comparison
+
 def max_num(num1, num2, num3):
   if num1 >= num2 and num1 >= num3:
     return num1
@@ -6,4 +8,10 @@ def max_num(num1, num2, num3):
   else:
     return num3
 
-print(max_num(1, 2, 3))
+num1 = 34
+num2 = 300
+num3 = 45
+
+print(max_num(num1, num2, num3))
+print(max(num1, num2, num3))
+
