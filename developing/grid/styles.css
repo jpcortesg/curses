@@ -1,0 +1,29 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: rgb(131, 183, 204);
+}
+
+.grid{
+  display: grid;
+  /* grid-template-rows: minmax(100px, auto); */
+  /* grid-template-columns: minmax(auto, 50%) 1fr 3em; */
+  grid-template-rows: repeat(2, 50px);
+  grid-template-columns: 30px repeat(3, 1fr) 15px;
+  grid-gap: 20px;
+}
+
+.element{
+  background: #888;
+}
+
+.header{
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}

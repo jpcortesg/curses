@@ -1,0 +1,96 @@
+*{
+  font-family: 'Roboto';
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: rgba(40, 9, 86, 0.3);
+}
+
+.title{
+  margin-left: 5rem;
+  font-weight: 300;
+  font-size: 3.5rem;
+  color: rgba(46, 48, 160, 0.75);
+}
+
+#str-btn{
+  cursor: pointer;
+  margin-left: 5rem;
+  margin-bottom: 2rem;
+  width: 10rem;
+  height: 3rem;
+  font-weight: 700;
+  background: rgba(170,171,240, 0.75);
+  border: solid #280956 0.1rem;
+  border-radius: 10rem;
+  font-size: 0.85rem;
+  color: #280956;
+  transition: 0.5s ease-in;
+}
+
+#str-btn:hover{
+  background: rgba(49, 50, 114, 0.75);
+  color: aliceblue;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.algo{
+  /* text-align: center; */
+  margin-left: 0.5rem;
+  font-weight: 300;
+  font-size: 2rem;
+  color: rgba(46, 48, 160, 0.75);
+}
+
+.next{
+  width: 80px;
+  height: 80px;
+  background: #280956;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0.6rem;
+}
+
+.nextBox{
+  height: 20px;
+  width: 20px;
+  border: solid #280956 0.063rem;
+  background: rgba(170,171,240, 0.4);
+}
+
+.grid{
+  /* margin: auto; */
+  width: 225px;
+  height: 450px;
+  background: #280956;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0.6rem;
+}
+
+.box{
+  height: 22.5px;
+  width: 22.5px;
+  background: rgba(170,171,240, 0.4);
+  border: solid #280956 0.063rem;
+}
+
+.taken{
+  background: transparent;
+}
+
+.nb{
+  border: none;
+}
+
+.tetrominoe{
+  background: rgb(194, 195, 236);
+}
