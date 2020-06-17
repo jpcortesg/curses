@@ -1,0 +1,18 @@
+.button{
+  color: #FFF; 
+  background-color: #9378FF;
+  border-color: #9378FF;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.button.secondary{
+  color: #9378FF;
+  background-color: #FFF;
+  border: 1px solid #9378FF;
+}
