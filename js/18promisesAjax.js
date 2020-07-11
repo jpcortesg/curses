@@ -23,8 +23,30 @@ const downloadUsers = quantity => new Promise((resolve, reject) => {
   xhr.send()
 })
 
-downloadUsers(30)
+downloadUsers(2460)
   .then(
-    members => console.log(members),
+    
+    members => printHTML(members),
     error => console.error('There was a mistake' + error)
   )
+
+function printHTML(users){
+  let html = ''
+  users.forEach(user => {
+    html += `
+      <li>
+        Name: ${user.name.first} ${user.name.last}
+        <br>
+        Country: ${user.nat}
+        <br>
+        image: 
+          <img src="${user.picture.medium}">
+      </li>
+      <br>
+    `
+  })
+
+  const app = document.querySelector('#app')
+
+  app.innerHTML = html
+}
