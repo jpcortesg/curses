@@ -23,7 +23,7 @@ const downloadUsers = quantity => new Promise((resolve, reject) => {
   xhr.send()
 })
 
-downloadUsers(2460)
+downloadUsers(20)
   .then(
     
     members => printHTML(members),
