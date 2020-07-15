@@ -8,4 +8,3 @@ app.get('*', (request, response) => {
 
 // Start out server
 app.listen(3000, () => console.log('our server is listening on port 3000'))
-
