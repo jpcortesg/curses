@@ -1,31 +1,33 @@
 const express = require('express')
-const Orders = require('../models/Orders')
+const Meals = require('../models/Meals')
 
+// Function of express
+// Allows creating routes and passing them to the app
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  Orders.find()
+  Meals.find()
     .exec()
     .then(x => res.status(200).send(x))
 })
 
 router.get('/:id', (req, res) => {
-  Orders.findById(req.params.id)
+  Meals.findById(req.params.id)
     .exec()
     .then(x => res.status(200).send(x))
 })
 
 router.post('/', (req, res) => {
-  Orders.create(req.body).then(x => res.status(201).send(x))
+  Meals.create(req.body).then(x => res.status(201).send(x))
 })
 
 router.put('/:id', (req, res) =>{
-  Orders.findByIdAndUpdate(req.params.id, req.body)
+  Meals.findByIdAndUpdate(req.params.id, req.body)
     .then(() => res.sendStatus(204))
 })
 
 router.delete('/:id', (req, res) => {
-  Orders.findOneAndDelete(req.params.id).exec().then(() => res.sendStatus(204))
+  Meals.findOneAndDelete(req.params.id).exec().then(() => res.sendStatus(204))
 })
 
 module.exports = router
