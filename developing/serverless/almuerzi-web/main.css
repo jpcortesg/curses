@@ -40,10 +40,14 @@ li{
   margin: 2px 0;
   font-weight: 300;
   text-align: center;
-  cursor: pointer;
+  cursor: context-menu;
   color: #eee;
   text-transform: uppercase;
   transition: 0.5s linear;
+}
+
+#meals-list li{
+  cursor: pointer;
 }
 
 #meals-list li:hover{
