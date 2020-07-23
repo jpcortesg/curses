@@ -1,4 +1,5 @@
 let mealState = []
+let route = 'login' // login, register, orders
 
 const stringToHTML = (str) => {
   const parser = new DOMParser()
@@ -27,7 +28,7 @@ const renderOrder = (order, meals) => {
   return elemnt;
 }
 
-window.onload = () => {
+const initializeForm = () => {
   const orderForm = document.getElementById('order')
   orderForm.onsubmit = (e) => {
     e.preventDefault()
@@ -35,23 +36,23 @@ window.onload = () => {
     submit.setAttribute('disabled', true)
     const mealsId = document.getElementById('meals-id')
     const mealsIdValue = mealsId.value;
-    if(!mealsIdValue){
+    if (!mealsIdValue) {
       alert('select a meals')
       return
     }
-    
+
     const order = {
-      meal_id : mealsIdValue,
-      user_id : 'Jennifer Lopez' 
+      meal_id: mealsIdValue,
+      user_id: 'Jennifer Lopez'
     }
 
     fetch('https://project.jpcortesg.vercel.app/api/orders', {
-      method : 'POST',
-      headers : {
-        'Content-Type' : 'application/json'
-      },
-      body : JSON.stringify(order)
-    }).then(x => x.json())
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(order)
+      }).then(x => x.json())
       .then(res => {
         const rendereOrder = renderOrder(res, mealState)
         const orderList = document.getElementById('orders-list')
@@ -59,7 +60,9 @@ window.onload = () => {
         submit.removeAttribute('disabled')
       })
   }
+}
 
+const initializeData = () => {
   fetch('https://project.jpcortesg.vercel.app/api/meals')
     .then(response => response.json())
     .then(data => {
@@ -79,7 +82,11 @@ window.onload = () => {
           const listOrder = ordersData.map(orderData => renderOrder(orderData, data))
           orderList.removeChild(orderList.firstElementChild)
           listOrder.forEach(element => orderList.appendChild(element))
-          console.log(ordersData);
         })
     })
+}
+
+window.onload = () => {
+  // initializeForm();
+  // initializeData();
 }
