@@ -1,6 +1,6 @@
 <div class="container p-4">
   {{#if links}}
-  <div class="row">
+  <div class="row mb-4">
     <div class="col-md-5 mx-auto">
       <div class="card card-body text-center px-5">
         <a href="/links/add" class="btn btn-primary">Create New!</a>
@@ -11,7 +11,7 @@
   <div class="row">
     {{#each links}}
     <div class="col-md-3">
-      <div class="card text-center alert-dark">
+      <div class="card text-center alert-dark mb-3">
         <div class="card-body">
           <a href="{{ url }}" target="_blank">
             <h3 class="card-title text-uppercase"> {{ title }} </h3>
