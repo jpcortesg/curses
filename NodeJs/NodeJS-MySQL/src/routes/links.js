@@ -3,6 +3,11 @@ const router = express.Router()
 
 const pool = require('./../database') // Connection to database
 
+router.get('/', async(req, res) => {
+  const links = await pool.query('SELECT * FROM links')
+  res.render('links/list', { links })
+})
+
 router.get('/add', (req, res) => {
   res.render('links/add.hbs')
 })
@@ -17,11 +22,6 @@ router.post('/add', async (req, res) => {
   await pool.query('INSERT INTO links set ?', [newLink])
   req.flash('success', 'Link save successfully')
   res.redirect('/links')
-})
-
-router.get('/', async(req, res) => {
-  const links = await pool.query('SELECT * FROM links')
-  res.render('links/list', { links })
 })
 
 router.get('/delete/:id', async (req, res) => {
