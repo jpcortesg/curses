@@ -42,6 +42,7 @@ app.use(passport.session())
 // Global variables
 app.use((req, res, next) => { 
   app.locals.success = req.flash('success') // To message in global for alert
+  app.locals.message = req.flash('message') // To message in global for alert
   next()
 })
 
