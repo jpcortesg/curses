@@ -5,11 +5,13 @@ const path = require('path') // Internal routes
 const flash = require('connect-flash') // To alert, messages in global variables
 const sesion = require('express-session') // To session
 const MySQLStore = require('express-mysql-session') // To 
+const passport = require('passport')
 
 const { database } = require('./keys') // To save in database, connection
 
 // Initializations 
 const app = express() // Start app, express
+require('./lib/passport')
 
 // Settings
 app.set('port', process.env.PORT || 4000) // Port assignment
@@ -34,6 +36,8 @@ app.use(flash()) // To message in global variables
 app.use(morgan('dev')) // For messages through the console
 app.use(express.urlencoded({extends: false}))  // Accept from form the data the user
 app.use(express.json()) // To receive json format
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Global variables
 app.use((req, res, next) => { 
