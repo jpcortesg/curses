@@ -4,12 +4,12 @@ const exphbs = require('express-handlebars') // Import handlebars, template engi
 const path = require('path') // Internal routes
 const flash = require('connect-flash') // To alert, messages in global variables
 const sesion = require('express-session') // To session
-const MySQLStore = require('express-mysql-session') // To 
+const MySQLStore = require('express-mysql-session') // To
 const passport = require('passport')
 
 const { database } = require('./keys') // To save in database, connection
 
-// Initializations 
+// Initializations
 const app = express() // Start app, express
 require('./lib/passport')
 
@@ -40,7 +40,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // Global variables
-app.use((req, res, next) => { 
+app.use((req, res, next) => {
   app.locals.success = req.flash('success') // To message in global for alert
   app.locals.message = req.flash('message') // To message in global for alert
   app.locals.user = req.user
