@@ -20,10 +20,9 @@ const resolvers = {
 
   Query:{
 
-    obtenerUsuario: async(_, { token }) => { 
-      
-      const usuarioId = await jwt.verify(token, process.env.SECRETA)
-      return usuarioId
+    obtenerUsuario: async(_, {}, ctx) => {
+
+      return ctx.usuario
 
     },
     obtenerProductos: async() => {
@@ -53,17 +52,17 @@ const resolvers = {
       } catch (error) {
         console.log(error);
       }
-      
+
     },
     obtenerClientesVendedor: async(_, {}, ctx) => {
-      
+
       try {
         const clientes = await Cliente.find({ vendedor: ctx.usuario.id.toString()  })
         return clientes
       } catch (error) {
         console.log(error);
       }
-      
+
     },
     obtenerCliente: async(_, { id }, ctx) => {
 
@@ -110,7 +109,7 @@ const resolvers = {
 
     },
     obtenerPedidosEstado: async(_, { estado }, ctx) => {
-      
+
       const pedidos = await Pedido.find({ vendedor: ctx.usuario.id, estado : estado } )
       return pedidos
 
@@ -132,7 +131,7 @@ const resolvers = {
             from: 'clientes',
             localField: '_id',
             foreignField: '_id',
-            as: "cliente"          
+            as: "cliente"
           }
         },
         {
@@ -183,7 +182,7 @@ const resolvers = {
     nuevoUsuario: async (_, {input}) => {
 
       const { email, password } = input
-      
+
       // Revisar si el usuario ya esta registrado
       const existeUsuario = await Usuario.findOne({email}) // Consulta si existe el email
       if(existeUsuario) throw new Error('El usuario ya esta registrado')
@@ -205,7 +204,7 @@ const resolvers = {
     autenticarUsuario: async (_, {input}) => {
 
       const {email, password} = input
-      
+
       // Existencia del usuario
       const existeUsuario = await Usuario.findOne({email})
       if(!existeUsuario) throw new Error('El usuario no existe')
@@ -244,7 +243,7 @@ const resolvers = {
 
       // Actualizar en la base de datos
       producto = await Producto.findOneAndUpdate({ _id : id }, input, { new: true })
-      
+
       return producto
 
     },
@@ -293,14 +292,14 @@ const resolvers = {
 
       // Verificar si el vendedor es quien edita
       if(cliente.vendedor.toString() !== ctx.usuario.id) throw new Error('No tiene las credenciales')
-      
+
       // Guardar el cliente
       cliente = await Cliente.findOneAndUpdate( {_id: id}, input, { new: true })
       return cliente
 
     },
     eliminarCliente: async(_, { id }, ctx) => {
-      
+
       // Verificar si existe el cliente
       let cliente = await Cliente.findById(id)
       if(!cliente) throw new Error('El cliente no existe')
@@ -322,15 +321,15 @@ const resolvers = {
       // Verificar si el cliente existe
       let clienteExiste = await Cliente.findById(cliente)
       if(!clienteExiste) throw new Error('El cliente no existe')
-      
+
       // Verificar si el cliente es del vendedor
       if(clienteExiste.vendedor.toString() !== ctx.usuario.id) throw new Error('No tiene las credenciales')
 
-      // Si esta disponible 
+      // Si esta disponible
       for await ( const articulo of input.pedido ){
         const { id } = articulo
         const producto = await Producto.findById(id)
-        
+
         if(articulo.cantidad > producto.existencia) throw new Error(`El articulo ${producto.nombre} excede la cantidad disponible`)
         else{
           // Restar cantidad del producto
@@ -373,12 +372,12 @@ const resolvers = {
         for await ( const articulo of input.pedido ){
           const { id } = articulo
           const producto = await Producto.findById(id)
-          
+
           if(articulo.cantidad > producto.existencia) throw new Error(`El articulo ${producto.nombre} excede la cantidad disponible`)
           else{
             // Restar cantidad del producto
             producto.existencia = producto.existencia - articulo.cantidad
-  
+
             // Guardar
             await producto.save()
           }

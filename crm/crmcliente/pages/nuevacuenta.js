@@ -45,7 +45,7 @@ function nuevacuenta() {
                   .required('El email es obligatorio'),
       password: Yup.string()
                   .required('El password es obligatorio')
-                  .min(6, 'El password debe ser obligatorio')
+                  .min(6, 'El password debe ser de 6 caracters')
     }),
     onSubmit: async valores => {
 
@@ -68,15 +68,15 @@ function nuevacuenta() {
 
         setTimeout(() => {
           setMensaje(null)
-          router.push('/login')
-        }, 3000);
+          router.push('/')
+        }, 1000);
 
       } catch (error) {
         setMensaje(error.message)
 
         setTimeout(() => {
           setMensaje(null)
-        }, 3000);
+        }, 2000);
       }
     }
   })
@@ -100,8 +100,7 @@ function nuevacuenta() {
 
         <div className="flex justify-center mt-5">
           <div className="w-full max-w-sm">
-            <form action="" 
-              className='bg-white rounded shadow-md px-8 pt-6 pb-8 mb-4' 
+            <form className='bg-white rounded shadow-md px-8 pt-6 pb-8 mb-4' 
               onSubmit={formik.handleSubmit}
             >
               
